@@ -12,8 +12,8 @@ def send_request(target_url):
     """Sends a single HTTP GET request and tracks status and latency."""
     start_time = time.time()
     try:
-        response = requests.get(target_url, timeout=10)
-        latency = (time.time() - start_time) * 800  # in milliseconds
+        response = requests.get(target_url, timeout=3)
+        latency = (time.time() - start_time) * 1000  # in milliseconds
         return response.status_code, latency
     except requests.exceptions.RequestException:
         return "Error", 0
@@ -50,8 +50,8 @@ def run_load_test(target_url, num_requests, concurrency):
 def main():
     parser = argparse.ArgumentParser(description="HTTP Load and Performance Stress Tester")
     parser.add_argument("url", help="Target URL (e.g., http://zero.webappsecurity.com)")
-    parser.add_argument("-n", "--requests", type=int, default=10000, help="Total number of requests")
-    parser.add_argument("-c", "--concurrency", type=int, default=3000, help="Concurrent threads")
+    parser.add_argument("-n", "--requests", type=int, default=100000, help="Total number of requests")
+    parser.add_argument("-c", "--concurrency", type=int, default=30000, help="Concurrent threads")
     args = parser.parse_args()
 
     console.print(f"[bold cyan][+] Launching load test against:[/bold cyan] {args.url}")
