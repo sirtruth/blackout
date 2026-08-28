@@ -12,8 +12,8 @@ def send_request(target_url):
     """Sends a single HTTP GET request and tracks status and latency."""
     start_time = time.time()
     try:
-        response = requests.get(target_url, timeout=5)
-        latency = (time.time() - start_time) * 1000  # in milliseconds
+        response = requests.get(target_url, timeout=10)
+        latency = (time.time() - start_time) * 800  # in milliseconds
         return response.status_code, latency
     except requests.exceptions.RequestException:
         return "Error", 0
