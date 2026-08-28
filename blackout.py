@@ -50,8 +50,8 @@ def run_load_test(target_url, num_requests, concurrency):
 def main():
     parser = argparse.ArgumentParser(description="HTTP Load and Performance Stress Tester")
     parser.add_argument("url", help="Target URL (e.g., http://zero.webappsecurity.com)")
-    parser.add_argument("-n", "--requests", type=int, default=100, help="Total number of requests")
-    parser.add_argument("-c", "--concurrency", type=int, default=30, help="Concurrent threads")
+    parser.add_argument("-n", "--requests", type=int, default=10000, help="Total number of requests")
+    parser.add_argument("-c", "--concurrency", type=int, default=3000, help="Concurrent threads")
     args = parser.parse_args()
 
     console.print(f"[bold cyan][+] Launching load test against:[/bold cyan] {args.url}")
